@@ -1,26 +1,55 @@
 // Get references to the HTML elements
 const counterDisplay = document.getElementById('counter');
-const addCoinButton = document.getElementById('addCoin');
+const totalDisplay = document.getElementById('total');
 const resetButton = document.getElementById('reset');
+const addPennyButton = document.getElementById('addPenny');
+const addNickelButton = document.getElementById('addNickel');
+const addDimeButton = document.getElementById('addDime');
+const addQuarterButton = document.getElementById('addQuarter');
 
-// Load the counter value from local storage if it exists, or start from 0
+// Load the counter values from local storage, or initialize to default
 let coinCount = localStorage.getItem('coinCount') ? parseInt(localStorage.getItem('coinCount')) : 0;
-counterDisplay.innerText = coinCount;
+let totalAmount = localStorage.getItem('totalAmount') ? parseFloat(localStorage.getItem('totalAmount')) : 0;
 
-// Function to update the counter display and save to local storage
-function updateCounter() {
-    counterDisplay.innerText = coinCount;
+// Update the displays
+function updateDisplays() {
+    counterDisplay.innerText = `Coins: ${coinCount}`;
+    totalDisplay.innerText = `Total: $${totalAmount.toFixed(2)}`;
     localStorage.setItem('coinCount', coinCount);
+    localStorage.setItem('totalAmount', totalAmount);
 }
 
-// Event listener for adding a coin
-addCoinButton.addEventListener('click', () => {
+// Event listeners for adding coins
+addPennyButton.addEventListener('click', () => {
     coinCount++;
-    updateCounter();
+    totalAmount += 0.01;
+    updateDisplays();
+});
+
+addNickelButton.addEventListener('click', () => {
+    coinCount++;
+    totalAmount += 0.05;
+    updateDisplays();
+});
+
+addDimeButton.addEventListener('click', () => {
+    coinCount++;
+    totalAmount += 0.10;
+    updateDisplays();
+});
+
+addQuarterButton.addEventListener('click', () => {
+    coinCount++;
+    totalAmount += 0.25;
+    updateDisplays();
 });
 
 // Event listener for resetting the counter
 resetButton.addEventListener('click', () => {
     coinCount = 0;
-    updateCounter();
+    totalAmount = 0;
+    updateDisplays();
 });
+
+// Initial update when page loads
+updateDisplays();
