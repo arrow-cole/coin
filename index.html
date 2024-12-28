@@ -3,34 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Counter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        #counter, #total {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        button {
-            font-size: 20px;
-            padding: 10px 20px;
-            margin: 5px;
-        }
-    </style>
+    <title>Savings Tracker</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Coin Counter</h1>
-    <div id="counter">Coins: 0</div>
-    <div id="total">Total: $0.00</div>
-    <button id="addPenny">Add Penny (1¢)</button>
-    <button id="addNickel">Add Nickel (5¢)</button>
-    <button id="addDime">Add Dime (10¢)</button>
-    <button id="addQuarter">Add Quarter (25¢)</button>
-    <button id="reset">Reset Counter</button>
+    <div class="tracker">
+        <h1>Savings Tracker</h1>
+        <p>Target: $1500</p>
+        <p id="current">Current Total: $0</p>
+        <input type="number" id="amount" placeholder="Enter amount to add" />
+        <button onclick="addAmount()">Add</button>
+        <div class="progress" id="progress"></div>
+    </div>
 
-    <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
